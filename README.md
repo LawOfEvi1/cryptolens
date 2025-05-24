@@ -56,7 +56,7 @@ Edit
 1. Клонируйте репозиторий:
 
 ```bash
-git clone https://github.com/username/monorepo.git
+git clone https://github.com/LawOfEvi1/CryptoLens.git
 cd monorepo
 Запустите инфраструктуру (Kafka, Redis, PostgreSQL и UI):
 
