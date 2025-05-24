@@ -1,0 +1,3 @@
+[tool.poetry]
+name = "CryptoLens"
+version = "0.1.0"

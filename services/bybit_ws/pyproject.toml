@@ -1,0 +1,3 @@
+[tool.poetry]
+name = "bybit_ws"
+version = "0.1.0"

@@ -1,0 +1,3 @@
+[tool.poetry]
+name = "common_lib"
+version = "0.1.0"
