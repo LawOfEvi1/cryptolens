@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: db_api
+    networks:
+      - kafka_network
+    ports:
+      - "8000:8000"
+    environment:
+      # Подключение к базе данных на локальной машине
+#      - DATABASE_URL=postgresql://youruser:yourpassword@host.docker.internal:5432/yourdb  # host.docker.internal для локальной машины
+#      - DATABASE_URL: postgresql+asyncpg://loe:ge5n7kme@192.168.140.130:5432/trading
+      # Подключение к Kafka, который работает в другом контейнере в сети kafka_net
+      - KAFKA_BROKER=kafka:9092  # Это если Kafka доступна через сеть kafka_net
+#    depends_on:
+#      - kafka
+    command: poetry run uvicorn app.main:app --host 0.0.0.0 --port 8000  # Запуск приложения через Poetry
+
+networks:
+  kafka_network:
+    external: true  # Указываем, что сеть kafka_network уже существует и внешняя
