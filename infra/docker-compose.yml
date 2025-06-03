@@ -56,17 +56,34 @@ services:
     image: postgres:15
     container_name: postgres
     restart: always
+    env_file:
+      - ../config/settings.env.docker  # путь до твоего .env
     environment:
-      POSTGRES_USER: loe
-      POSTGRES_PASSWORD: pass2
-      POSTGRES_DB: mydb
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:
       - kafka_net
-
+  db_api:
+    build:
+      context: ../services/db_api  # путь от infra до db_api
+      dockerfile: Dockerfile       # если он так и называется
+    container_name: db_api
+    restart: always
+    depends_on:
+      - postgres
+    networks:
+      - kafka_net
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../services/db_api:/app     # чтобы код подхватывался локально
+    environment:
+      ENV_FILE: settings.env.docker
 volumes:
   postgres_data:
 
