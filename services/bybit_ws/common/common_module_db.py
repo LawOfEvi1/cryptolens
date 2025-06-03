@@ -4,7 +4,7 @@ from common import url_start
 
 
 async def fill_pairs():
-    url = url_start + "select-trading-pair-all"
+    url = url_start + "api/v1/trading-pair/select-all"
     result = []
     try:
         response = requests.get(url)

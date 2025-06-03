@@ -84,6 +84,21 @@ services:
       - ../services/db_api:/app     # чтобы код подхватывался локально
     environment:
       ENV_FILE: settings.env.docker
+  bybit_ws:
+    build:
+      context: ../services/bybit_ws
+      dockerfile: Dockerfile
+    container_name: bybit_ws
+    depends_on:
+      - kafka
+    networks:
+      - kafka_net
+    ports:
+      - "9000:9000"  # если нужно
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+    volumes:
+      - ../services/bybit_ws:/app
 volumes:
   postgres_data:
 

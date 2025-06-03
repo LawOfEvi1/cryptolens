@@ -19,7 +19,7 @@ async def subscribe_kline(pairs, producer):
                 ws.kline_stream(
                     interval=interval,
                     symbol=pair,
-                    callback=partial(handle_kline_msg, "get_kline_stream", producer)
+                    callback=partial(handle_kline_msg, f"get_kline_stream_{pair}", producer)
                 )
 
         # Обрабатываем события в цикле
