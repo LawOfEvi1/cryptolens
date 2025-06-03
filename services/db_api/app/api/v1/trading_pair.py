@@ -12,3 +12,8 @@ router = APIRouter(prefix="/trading-pair", tags=["trading-pair"])
 async def create_trading_pair(data: TradingPairIn, session: AsyncSession = Depends(get_async_session)):
     result = await TradingPair.create(data.model_dump(), session)
     return {"trading pair - ": result.symbol}
+
+@router.get("/select-all")
+async def get_select_trading_pair_all():
+    result = await TradingPair.select_trading_pair_all()
+    return  tuple(result)
