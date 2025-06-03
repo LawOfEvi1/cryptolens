@@ -13,15 +13,15 @@ async def main():
     task1 = asyncio.create_task(run_listener_get_kline_stream())
     # task2 = asyncio.create_task(run_orderbook())
     task3 = asyncio.create_task(run_listener_all_liquidation())
-    task4 = asyncio.create_task(run_listener_trade_stream())
+    # task4 = asyncio.create_task(run_listener_trade_stream())
 
     # Ждём их завершения
     await asyncio.gather(
                         task1
                          # , task2
                          , task3
-                         ,
-                         task4
+                         # ,
+                         # task4
                          )
 
 

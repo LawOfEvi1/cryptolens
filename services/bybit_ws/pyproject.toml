@@ -1,18 +1,19 @@
-[project]
+[tool.poetry]
 name = "bybit-ws"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "loe",email = "Law_Of_Evi1@mail.ru"}
-]
+authors = ["loe <Law_Of_Evi1@mail.ru>"]
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "pybit (>=5.11.0,<6.0.0)",
-    "kafka-python (>=2.2.10,<3.0.0)"
-]
+packages = [{ include = "." }]
 
+[tool.poetry.dependencies]
+python = ">=3.12"
+pybit = ">=5.11.0,<6.0.0"
+kafka-python = ">=2.2.10,<3.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

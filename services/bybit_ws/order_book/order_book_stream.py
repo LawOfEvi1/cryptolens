@@ -19,7 +19,7 @@ async def subscribe_order_book(pairs, producer):
         # Подписываемся на несколько пар
         for pair in pairs:
             ws.orderbook_stream(depth=500, symbol=pair,
-                                callback=partial(handle_message, "get_order_book", producer)
+                                callback=partial(handle_message, f"get_order_book_{pair}", producer)
                                 )
 
         # Обрабатываем события в цикле
