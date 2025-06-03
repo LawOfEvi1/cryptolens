@@ -26,4 +26,14 @@ dist/
 # Logs and system files
 *.log
 .DS_Store
+
+
+#заметки по не реализованым/реализованным планам
 notes.txt
+implemented.txt
+
+#пароли и настройи
+*.env*
+
+#Файлы миграций
+db/migrations/versions/
